@@ -283,3 +283,27 @@ open dashboard.html       # macOS
 xdg-open dashboard.html   # Linux
 ```
 
+---
+
+## 9. Project Images & Screenshots
+
+This section showcases the key interfaces, firewall architecture, intrusion detection capabilities, and testing results of the **Stateful Application-Layer Firewall & Intrusion Filter**.
+
+### 9.1 Project Image Gallery
+
+#### Image 1: Main Firewall Dashboard
+![Main Firewall Dashboard](1.png)
+
+#### Image 2: Live Packet Monitoring
+![Live Packet Monitoring](2.png)
+
+#### Image 3: Deep Packet Inspection (DPI)
+![Deep Packet Inspection](3.png)
+
+#### Image 4: Intrusion Detection and Threat Alerts
+![Intrusion Detection and Threat Alerts](4.png)
+
+#### Image 5: Firewall Testing and Results
+![Firewall Testing and Results](5.png)
+
+---

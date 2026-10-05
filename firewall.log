@@ -1,0 +1,2225 @@
+2026-09-30 18:27:47.987720 [INFO] [FirewallDaemon.cpp:75] Initializing Firewall Daemon subsystems...
+2026-09-30 18:27:47.988392 [INFO] [Inspector.cpp:241] Inspector: Successfully loaded 20 rules from rules/default_rules.conf
+2026-09-30 18:27:47.988400 [INFO] [FirewallDaemon.cpp:84] Loaded 20 custom L7 rules from rules/default_rules.conf
+2026-09-30 18:27:47.988401 [INFO] [Interceptor.cpp:85] Interceptor: Running in non-Linux or simulated environment. Netfilter hooks disabled.
+2026-09-30 18:27:47.988401 [INFO] [FirewallDaemon.cpp:101] All Firewall Daemon subsystems successfully initialized.
+2026-09-30 18:27:47.988401 [INFO] [FirewallDaemon.cpp:116] Starting Stateful Firewall engine on NFQUEUE #0
+2026-09-30 18:27:47.988415 [INFO] [ConntrackTable.cpp:21] Conntrack garbage collection thread started (interval: 5s)
+2026-09-30 18:27:47.988423 [INFO] [Interceptor.cpp:95] Interceptor worker thread started
+2026-09-30 18:27:47.988423 [INFO] [FirewallDaemon.cpp:122] Firewall is active and filtering network traffic.
+2026-09-30 18:27:50.996156 [INFO] [FirewallDaemon.cpp:41] Shutdown signal (2) received. Initiating graceful shutdown...
+2026-09-30 18:27:57.993450 [INFO] [FirewallDaemon.cpp:161] Commencing Firewall Daemon teardown sequence...
+2026-09-30 18:27:58.001198 [INFO] [Interceptor.cpp:105] Interceptor worker thread stopped
+2026-09-30 18:27:58.001338 [INFO] [ConntrackTable.cpp:32] Conntrack garbage collection thread stopped
+2026-09-30 18:27:58.001348 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:27:58.001350 [INFO] [FirewallDaemon.cpp:176] Firewall Daemon successfully stopped. Flushing logs...
+2026-09-30 18:30:00.316709 [INFO] [FirewallDaemon.cpp:75] Initializing Firewall Daemon subsystems...
+2026-09-30 18:30:00.318530 [INFO] [Inspector.cpp:241] Inspector: Successfully loaded 20 rules from rules/default_rules.conf
+2026-09-30 18:30:00.318550 [INFO] [FirewallDaemon.cpp:84] Loaded 20 custom L7 rules from rules/default_rules.conf
+2026-09-30 18:30:00.318551 [INFO] [Interceptor.cpp:85] Interceptor: Running in non-Linux or simulated environment. Netfilter hooks disabled.
+2026-09-30 18:30:00.318552 [INFO] [FirewallDaemon.cpp:101] All Firewall Daemon subsystems successfully initialized.
+2026-09-30 18:30:00.318553 [INFO] [FirewallDaemon.cpp:116] Starting Stateful Firewall engine on NFQUEUE #0
+2026-09-30 18:30:00.318578 [INFO] [ConntrackTable.cpp:21] Conntrack garbage collection thread started (interval: 5s)
+2026-09-30 18:30:00.318592 [INFO] [Interceptor.cpp:95] Interceptor worker thread started
+2026-09-30 18:30:00.318592 [INFO] [FirewallDaemon.cpp:122] Firewall is active and filtering network traffic.
+2026-09-30 18:30:10.323861 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:30:50.615589 [INFO] [FirewallDaemon.cpp:75] Initializing Firewall Daemon subsystems...
+2026-09-30 18:30:50.616400 [INFO] [Inspector.cpp:241] Inspector: Successfully loaded 20 rules from rules/default_rules.conf
+2026-09-30 18:30:50.616422 [INFO] [FirewallDaemon.cpp:84] Loaded 20 custom L7 rules from rules/default_rules.conf
+2026-09-30 18:30:50.616425 [INFO] [Interceptor.cpp:85] Interceptor: Running in non-Linux or simulated environment. Netfilter hooks disabled.
+2026-09-30 18:30:50.616425 [INFO] [FirewallDaemon.cpp:101] All Firewall Daemon subsystems successfully initialized.
+2026-09-30 18:30:50.616427 [INFO] [FirewallDaemon.cpp:116] Starting Stateful Firewall engine on NFQUEUE #0
+2026-09-30 18:30:50.616462 [INFO] [ConntrackTable.cpp:21] Conntrack garbage collection thread started (interval: 5s)
+2026-09-30 18:30:50.616485 [INFO] [Interceptor.cpp:95] Interceptor worker thread started
+2026-09-30 18:30:50.616486 [INFO] [FirewallDaemon.cpp:122] Firewall is active and filtering network traffic.
+2026-09-30 18:31:00.617999 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:31:10.623232 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:31:20.627411 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:31:29.508887 [INFO] [FirewallDaemon.cpp:45] SIGHUP received. Reloading rules from: rules/default_rules.conf
+2026-09-30 18:31:29.510290 [INFO] [Inspector.cpp:241] Inspector: Successfully loaded 20 rules from rules/default_rules.conf
+2026-09-30 18:31:30.632584 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:31:40.632999 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:31:50.638352 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:32:00.643048 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:32:10.648760 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:32:20.652749 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:32:30.657972 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:32:40.660994 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:32:50.666783 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:33:00.671546 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:33:10.676837 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:33:20.681270 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:33:30.681192 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:33:40.683736 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:33:50.682983 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:34:00.686709 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:34:10.691611 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:34:20.693756 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:34:30.698763 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:34:40.701877 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:34:50.706596 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:35:00.711515 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:35:10.714087 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:35:20.718336 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:35:30.722505 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:35:40.725598 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:35:50.730930 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:36:00.734393 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:36:10.735500 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:36:20.740767 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:36:30.776493 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:36:40.781996 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:36:50.787233 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:37:00.791155 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:37:10.795787 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:37:20.797012 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:37:30.802181 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:37:40.806868 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:37:50.815828 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:38:00.816255 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:38:10.819793 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:38:20.826237 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:38:30.832302 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:38:40.832968 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:38:50.837041 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:39:00.843359 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:39:10.845212 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:39:20.852455 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:39:30.858586 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:39:40.862524 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:39:50.864636 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:00.869965 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:10.875498 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:20.879442 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:30.883245 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:40.888365 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:43.606223 [INFO] [FirewallDaemon.cpp:75] Initializing Firewall Daemon subsystems...
+2026-09-30 18:40:43.607216 [INFO] [Inspector.cpp:241] Inspector: Successfully loaded 20 rules from rules/default_rules.conf
+2026-09-30 18:40:43.607234 [INFO] [FirewallDaemon.cpp:84] Loaded 20 custom L7 rules from rules/default_rules.conf
+2026-09-30 18:40:43.607237 [INFO] [Interceptor.cpp:85] Interceptor: Running in non-Linux or simulated environment. Netfilter hooks disabled.
+2026-09-30 18:40:43.607238 [INFO] [FirewallDaemon.cpp:101] All Firewall Daemon subsystems successfully initialized.
+2026-09-30 18:40:43.607239 [INFO] [FirewallDaemon.cpp:116] Starting Stateful Firewall engine on NFQUEUE #0
+2026-09-30 18:40:43.607274 [INFO] [ConntrackTable.cpp:21] Conntrack garbage collection thread started (interval: 5s)
+2026-09-30 18:40:43.607296 [INFO] [Interceptor.cpp:95] Interceptor worker thread started
+2026-09-30 18:40:43.607296 [INFO] [FirewallDaemon.cpp:122] Firewall is active and filtering network traffic.
+2026-09-30 18:40:50.893516 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:40:53.611542 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:00.895359 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:03.616737 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:10.899793 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:13.620186 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:20.904951 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:23.626353 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:26.904182 [INFO] [FirewallDaemon.cpp:45] SIGHUP received. Reloading rules from: rules/default_rules.conf
+2026-09-30 18:41:26.905923 [INFO] [Inspector.cpp:241] Inspector: Successfully loaded 20 rules from rules/default_rules.conf
+2026-09-30 18:41:30.909352 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:33.665601 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:40.914066 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:43.670877 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:50.916254 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:41:53.676069 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:00.954846 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:03.678117 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:10.956399 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:13.682832 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:20.959735 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:23.687776 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:30.964655 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:33.692706 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:40.965859 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:43.697957 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:50.971377 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:42:53.698429 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:00.976738 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:03.704179 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:10.981400 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:13.710096 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:20.984066 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:23.711059 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:30.989367 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:33.716927 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:40.992185 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:43.721979 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:50.994287 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:43:53.727234 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:00.999610 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:03.732592 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:11.004893 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:13.737970 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:21.008693 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:23.738387 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:31.012039 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:33.742413 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:41.016579 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:43.743018 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:51.021991 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:44:53.748394 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:01.031714 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:03.749678 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:11.037244 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:13.753277 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:21.042167 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:23.758947 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:31.044249 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:33.760810 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:41.049605 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:43.762149 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:51.053362 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:45:53.762388 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:01.059348 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:03.764810 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:11.064400 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:13.770041 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:21.069146 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:23.775765 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:31.073575 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:33.779742 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:41.075442 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:43.784221 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:51.079094 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:46:53.789135 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:01.084624 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:03.795995 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:11.093397 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:13.805067 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:21.096813 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:23.811922 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:31.099915 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:33.814934 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:41.113880 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:43.817778 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:51.122709 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:47:53.818961 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:01.128113 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:03.826114 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:11.129548 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:13.830043 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:21.136202 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:23.841281 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:31.140970 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:33.845874 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:41.143953 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:43.848567 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:51.152162 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:48:53.867950 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:01.159788 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:03.871688 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:11.163425 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:13.878307 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:21.170083 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:23.883837 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:31.179580 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:33.887517 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:41.185264 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:43.897253 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:51.188359 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:49:53.898045 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:01.194404 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:03.901560 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:11.202206 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:13.907763 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:21.206193 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:23.912507 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:31.211479 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:33.915836 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:41.213352 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:43.920903 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:51.217446 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:50:53.923127 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:01.222929 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:03.924422 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:11.224316 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:13.929586 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:21.229730 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:23.932206 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:31.240204 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:33.933604 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:41.243737 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:43.943615 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:51.245851 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:51:53.948964 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:01.251144 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:03.952229 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:11.255066 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:13.955377 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:21.260432 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:23.960630 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:31.264599 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:33.965797 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:41.266150 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:43.970285 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:51.268523 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:52:53.973870 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:01.273676 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:03.978068 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:11.275900 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:13.982068 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:21.277334 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:23.986380 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:31.278376 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:33.991258 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:38.740950 [INFO] [FirewallDaemon.cpp:41] Shutdown signal (15) received. Initiating graceful shutdown...
+2026-09-30 18:53:38.741465 [INFO] [FirewallDaemon.cpp:41] Shutdown signal (15) received. Initiating graceful shutdown...
+2026-09-30 18:53:41.283938 [INFO] [FirewallDaemon.cpp:161] Commencing Firewall Daemon teardown sequence...
+2026-09-30 18:53:41.287707 [INFO] [Interceptor.cpp:105] Interceptor worker thread stopped
+2026-09-30 18:53:41.287931 [INFO] [ConntrackTable.cpp:32] Conntrack garbage collection thread stopped
+2026-09-30 18:53:41.287957 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:41.287963 [INFO] [FirewallDaemon.cpp:176] Firewall Daemon successfully stopped. Flushing logs...
+2026-09-30 18:53:43.993749 [INFO] [FirewallDaemon.cpp:161] Commencing Firewall Daemon teardown sequence...
+2026-09-30 18:53:44.020445 [INFO] [Interceptor.cpp:105] Interceptor worker thread stopped
+2026-09-30 18:53:44.020621 [INFO] [ConntrackTable.cpp:32] Conntrack garbage collection thread stopped
+2026-09-30 18:53:44.020646 [INFO] [FirewallDaemon.cpp:153] 
+--- [FIREWALL STATS MONITOR] ---
+  Active Connections : 0
+  Total Pkts Seen    : 0
+  Packets Accepted   : 0
+  Conntrack Drops    : 0
+  L7 Threats Dropped : 0
+  L7 Threats Alerted : 0
+  Conntrack Evicted  : 0
+--------------------------------
+2026-09-30 18:53:44.020660 [INFO] [FirewallDaemon.cpp:176] Firewall Daemon successfully stopped. Flushing logs...

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .glow-maroon { box-shadow: 0 4px 14px -2px rgba(128, 0, 32, 0.25); }
+    .glow-soft { box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.06); }
+    .pulse-scan { animation: pulse 0.3s ease-out; }
+    @keyframes pulse {
+      0% { transform: scale(0.99); }
+      50% { transform: scale(1.01); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-transparent text-stone-900 antialiased p-2 font-sans select-none">
+  <div class="bg-white text-stone-900 border border-[#edd7dd] rounded-2xl p-4 shadow-sm space-y-3 max-w-xl mx-auto">
+    
+    <!-- Top Bar (No Logo - Pure Maroon & White Typography) -->
+    <div class="flex items-center justify-between border-b border-[#edd7dd] pb-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#800020] animate-pulse"></span>
+        <h3 class="font-extrabold text-xs tracking-tight text-[#800020]">Stateful Firewall & L7 Filter</h3>
+        <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#fdf2f4] text-[#800020] border border-[#f3d5dc] font-bold">NFQUEUE #0</span>
+      </div>
+      <span class="text-[11px] text-stone-400 font-mono">By <strong class="text-stone-700">Ayush Behera</strong></span>
+    </div>
+
+    <!-- Quick Attack Buttons in Maroon & White -->
+    <div>
+      <div class="text-[11px] font-semibold text-stone-600 mb-1.5 flex justify-between items-center">
+        <span>Click an Attack Vector:</span>
+        <span id="w-tested-count" class="font-mono text-[#800020] text-[10px] font-bold">Ready</span>
+      </div>
+      <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
+        <button onclick="testVector('clean')" id="wb-clean" class="btn-chip px-2 py-1.5 text-[11px] font-semibold rounded-xl bg-white hover:bg-[#fdf2f4] text-stone-800 border border-[#edd7dd] hover:border-[#800020] transition text-center shadow-xs">
+          Clean Web
+        </button>
+        <button onclick="testVector('sqli')" id="wb-sqli" class="btn-chip px-2 py-1.5 text-[11px] font-semibold rounded-xl bg-white hover:bg-[#fdf2f4] text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition text-center shadow-xs">
+          SQLi UNION
+        </button>
+        <button onclick="testVector('xss')" id="wb-xss" class="btn-chip px-2 py-1.5 text-[11px] font-semibold rounded-xl bg-white hover:bg-[#fdf2f4] text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition text-center shadow-xs">
+          XSS Script
+        </button>
+        <button onclick="testVector('trav')" id="wb-trav" class="btn-chip px-2 py-1.5 text-[11px] font-semibold rounded-xl bg-white hover:bg-[#fdf2f4] text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition text-center shadow-xs">
+          Traversal
+        </button>
+        <button onclick="testVector('rce')" id="wb-rce" class="btn-chip px-2 py-1.5 text-[11px] font-semibold rounded-xl bg-white hover:bg-[#fdf2f4] text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition text-center shadow-xs">
+          RCE Shell
+        </button>
+        <button onclick="testVector('bot')" id="wb-bot" class="btn-chip px-2 py-1.5 text-[11px] font-semibold rounded-xl bg-white hover:bg-[#fdf2f4] text-[#800020] border border-[#edd7dd] hover:border-[#800020] transition text-center shadow-xs">
+          sqlmap Bot
+        </button>
+      </div>
+    </div>
+
+    <!-- Real-Time Verdict Card (Maroon & White) -->
+    <div id="w-banner" class="rounded-xl p-3 border-2 transition-all duration-300 glow-soft bg-white border-stone-300 text-stone-900 flex items-center justify-between">
+      <div>
+        <div class="flex items-center gap-1.5">
+          <span id="w-title" class="font-extrabold text-xs tracking-wider font-mono text-stone-900">VERDICT: NF_ACCEPT</span>
+          <span id="w-badge" class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-stone-100 text-stone-800 uppercase tracking-wider font-mono">CLEAN</span>
+        </div>
+        <div id="w-desc" class="text-[11px] text-stone-500 mt-0.5">Flow established &bull; Packet passed all L7 inspection rules</div>
+      </div>
+      <div class="text-right font-mono text-[10px] text-stone-500 space-y-0.5 pl-2 border-l border-stone-200">
+        <div>Rule: <span id="w-rule" class="text-stone-800 font-bold">ALLOW</span></div>
+        <div>State: <span id="w-state" class="text-[#800020] font-bold">ESTABLISHED</span></div>
+      </div>
+    </div>
+
+    <!-- Packet Stream Display -->
+    <div class="bg-[#faf7f8] border border-[#edd7dd] rounded-xl p-2.5 space-y-1 text-xs font-mono">
+      <div class="text-[10px] text-stone-500 flex justify-between items-center">
+        <span>Captured Network Packet Stream:</span>
+        <span id="w-flow" class="text-stone-700 font-bold">192.168.1.142:51204 &rarr; 10.0.0.1:80 [TCP]</span>
+      </div>
+      <div id="w-stream" class="p-2 rounded-lg bg-white border border-[#edd7dd] text-[11px] text-stone-800 truncate select-all shadow-inner">
+        GET /products.html?category=electronics HTTP/1.1
+      </div>
+      <div id="w-match-box" class="hidden flex items-center justify-between text-[11px] pt-1 text-[#800020] border-t border-[#edd7dd] font-bold">
+        <span>Matched Exploit Signature:</span>
+        <span id="w-snippet" class="px-2 py-0.5 rounded bg-[#800020] text-white"></span>
+      </div>
+    </div>
+
+    <!-- Interactive Execution Input & Button -->
+    <div class="flex gap-2">
+      <input id="w-input" type="text" value="GET /index.html HTTP/1.1" class="w-full bg-[#faf7f8] border border-[#edd7dd] rounded-xl px-3 py-1.5 text-xs font-mono text-stone-800 focus:outline-none focus:border-[#800020]" placeholder="Type custom payload and press Enter..." onkeydown="if(event.key==='Enter') executeCustom()">
+      <button onclick="executeCustom()" class="px-4 py-1.5 text-xs font-bold rounded-xl bg-[#800020] hover:bg-[#660018] text-white transition shadow-sm whitespace-nowrap border border-[#800020]">
+        Inspect (Enter)
+      </button>
+    </div>
+
+    <!-- Telemetry Strip -->
+    <div class="grid grid-cols-4 gap-2 text-center text-[10px] font-mono border-t border-[#edd7dd] pt-2 text-stone-500">
+      <div>Total: <span id="m-total" class="font-bold text-stone-800">1,248</span></div>
+      <div>Clean: <span id="m-pass" class="font-bold text-stone-700">1,211</span></div>
+      <div>Blocked: <span id="m-drop" class="font-bold text-[#800020]">37</span></div>
+      <div>Latency: <span class="font-bold text-[#800020]">22 &micro;s</span></div>
+    </div>
+
+  </div>
+
+  <script>
+    let stats = { total: 1248, pass: 1211, drop: 37 };
+
+    const ATTACK_MAP = {
+      clean: {
+        stream: "GET /products.html?category=electronics HTTP/1.1",
+        verdict: "NF_ACCEPT",
+        badge: "CLEAN",
+        rule: "ALLOW",
+        desc: "Legitimate HTTP query cleared all inspection rules",
+        match: null,
+        state: "ESTABLISHED",
+        flow: "192.168.1.142:51204 -> 10.0.0.1:80 [TCP]",
+        isDrop: false
+      },
+      sqli: {
+        stream: "GET /item.php?id=1%20UNION%20SELECT%20user,pass%20FROM%20admin HTTP/1.1",
+        verdict: "NF_DROP",
+        badge: "CRITICAL",
+        rule: "SQLI-101",
+        desc: "SQL Injection: UNION-based database exfiltration blocked",
+        match: "UNION SELECT",
+        state: "CLOSED",
+        flow: "192.168.1.88:42190 -> 10.0.0.1:80 [TCP]",
+        isDrop: true
+      },
+      xss: {
+        stream: "GET /search?q=%3Cscript%3Ealert(document.cookie)%3C/script%3E HTTP/1.1",
+        verdict: "NF_DROP",
+        badge: "CRITICAL",
+        rule: "XSS-101",
+        desc: "Cross-Site Scripting: Inline script execution vector blocked",
+        match: "<script>",
+        state: "CLOSED",
+        flow: "192.168.1.102:39102 -> 10.0.0.1:80 [TCP]",
+        isDrop: true
+      },
+      trav: {
+        stream: "GET /view.php?file=../../../../etc/passwd HTTP/1.1",
+        verdict: "NF_DROP",
+        badge: "HIGH",
+        rule: "TRAV-101",
+        desc: "Path Traversal: Local file inclusion sequence blocked",
+        match: "../../../../etc/passwd",
+        state: "CLOSED",
+        flow: "192.168.1.55:54112 -> 10.0.0.1:80 [TCP]",
+        isDrop: true
+      },
+      rce: {
+        stream: "POST /exec HTTP/1.1\\r\\n\\r\\ncmd=127.0.0.1;%20cat%20/etc/passwd",
+        verdict: "NF_DROP",
+        badge: "CRITICAL",
+        rule: "RCE-101",
+        desc: "Remote Code Execution: Shell command chaining detected",
+        match: "; cat /etc/passwd",
+        state: "CLOSED",
+        flow: "192.168.1.201:61902 -> 10.0.0.1:80 [TCP]",
+        isDrop: true
+      },
+      bot: {
+        stream: "GET /login HTTP/1.1\\r\\nUser-Agent: sqlmap/1.7.2#stable",
+        verdict: "NF_DROP",
+        badge: "SCANNER",
+        rule: "SCAN-101",
+        desc: "Vulnerability Scanner: Automated attack bot blocked",
+        match: "sqlmap/1.7.2",
+        state: "CLOSED",
+        flow: "192.168.1.189:48110 -> 10.0.0.1:80 [TCP]",
+        isDrop: true
+      }
+    };
+
+    function testVector(key) {
+      const data = ATTACK_MAP[key];
+      if (!data) return;
+
+      document.getElementById("w-input").value = data.stream;
+      applyVerdict(data);
+    }
+
+    function executeCustom() {
+      const val = document.getElementById("w-input").value;
+      let decoded = val;
+      try { decoded = decodeURIComponent(val); } catch(e) {}
+
+      if (/union\s+select/i.test(decoded)) {
+        testVector('sqli');
+      } else if (/<script|javascript:/i.test(decoded)) {
+        testVector('xss');
+      } else if (/\.\.\/|\/etc\/passwd/i.test(decoded)) {
+        testVector('trav');
+      } else if (/;\s*(cat|id|whoami|bash)/i.test(decoded)) {
+        testVector('rce');
+      } else if (/sqlmap|nikto/i.test(decoded)) {
+        testVector('bot');
+      } else {
+        applyVerdict({
+          stream: val,
+          verdict: "NF_ACCEPT",
+          badge: "CLEAN",
+          rule: "ALLOW",
+          desc: "Custom packet payload cleared all L7 signature filters",
+          match: null,
+          state: "ESTABLISHED",
+          flow: "192.168.1.142:51204 -> 10.0.0.1:80 [TCP]",
+          isDrop: false
+        });
+      }
+    }
+
+    function applyVerdict(data) {
+      stats.total++;
+      if (data.isDrop) stats.drop++;
+      else stats.pass++;
+
+      document.getElementById("m-total").textContent = stats.total.toLocaleString();
+      document.getElementById("m-pass").textContent = stats.pass.toLocaleString();
+      document.getElementById("m-drop").textContent = stats.drop.toLocaleString();
+
+      const banner = document.getElementById("w-banner");
+      const title = document.getElementById("w-title");
+      const badge = document.getElementById("w-badge");
+      const desc = document.getElementById("w-desc");
+      const rule = document.getElementById("w-rule");
+      const state = document.getElementById("w-state");
+      const stream = document.getElementById("w-stream");
+      const flow = document.getElementById("w-flow");
+      const matchBox = document.getElementById("w-match-box");
+      const snippet = document.getElementById("w-snippet");
+
+      banner.classList.remove("pulse-scan");
+      void banner.offsetWidth;
+      banner.classList.add("pulse-scan");
+
+      stream.textContent = data.stream;
+      flow.textContent = data.flow;
+      title.textContent = "VERDICT: " + data.verdict;
+      badge.textContent = data.badge;
+      desc.textContent = data.desc;
+      rule.textContent = data.rule;
+      state.textContent = data.state;
+
+      if (data.isDrop) {
+        banner.className = "rounded-xl p-3 border-2 transition-all duration-300 glow-maroon bg-[#fdf2f4] border-[#800020] text-[#800020] flex items-center justify-between pulse-scan";
+        title.className = "font-extrabold text-xs tracking-wider font-mono text-[#800020]";
+        badge.className = "text-[9px] font-bold px-1.5 py-0.5 rounded bg-[#800020] text-white uppercase tracking-wider font-mono";
+        desc.className = "text-[11px] text-[#800020] mt-0.5";
+        rule.className = "text-[#800020] font-bold";
+        state.className = "text-[#800020] font-bold";
+        matchBox.classList.remove("hidden");
+        snippet.textContent = `"${data.match}"`;
+      } else {
+        banner.className = "rounded-xl p-3 border-2 transition-all duration-300 glow-soft bg-white border-stone-300 text-stone-900 flex items-center justify-between pulse-scan";
+        title.className = "font-extrabold text-xs tracking-wider font-mono text-stone-900";
+        badge.className = "text-[9px] font-bold px-1.5 py-0.5 rounded bg-stone-100 text-stone-800 uppercase tracking-wider font-mono";
+        desc.className = "text-[11px] text-stone-500 mt-0.5";
+        rule.className = "text-stone-700 font-bold";
+        state.className = "text-[#800020] font-bold";
+        matchBox.classList.add("hidden");
+      }
+    }
+  </script>
+</body>
+</html>
